@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Veri: ham ve dönüştürülmüş veri setleri depoya yüklenmez.
+# Herkes scripts/veri_indir.py ile kendi bilgisayarına indirir.
+data/raw/
+data/processed/
+
+# Editör / işletim sistemi
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
