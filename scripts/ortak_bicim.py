@@ -13,6 +13,9 @@ from src.veri.donustur import hepsini_yukle  # noqa: E402
 
 
 def main() -> int:
+    if not (KOK / "data" / "raw" / "mohler" / "data").exists():
+        print("Ham veri bulunamadı. Önce 'python scripts/veri_indir.py' çalıştırılmalı.", file=sys.stderr)
+        return 1
     df = hepsini_yukle(KOK / "data" / "raw")
     cikti = KOK / "data" / "processed" / "ortak_veri.csv"
     cikti.parent.mkdir(parents=True, exist_ok=True)
