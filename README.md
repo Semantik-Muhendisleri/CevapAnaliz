@@ -4,11 +4,6 @@ Açık uçlu öğrenci cevaplarını, öğretmenin referans cevabıyla **anlam b
 
 Fırat Üniversitesi Bilgisayar Mühendisliği Tasarım Dersi projesi · **Semantik Mühendisleri**
 
-| Üye | Numara |
-|---|---|
-| Sudenur Keçeci | 235260042 |
-| Ahmet Kurt | 245260018 |
-| Ramazan Aslan | 235260100 |
 
 ## Klasör yapısı
 
