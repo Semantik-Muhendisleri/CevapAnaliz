@@ -1,0 +1,13 @@
+veri_seti,test,yontem,n,pearson,spearman,qwk,mae
+mohler,5 katlı çapraz doğrulama,yalniz_kosinus,2273,0.451,0.5153,0.0979,0.5449
+mohler,5 katlı çapraz doğrulama,uc_ozellik,2273,0.4988,0.5315,0.3283,0.1406
+scientsbank,test_ua,yalniz_kosinus,540,0.4122,0.4268,0.22,0.4107
+scientsbank,test_ua,uc_ozellik,540,0.4234,0.4295,0.1665,0.3528
+scientsbank,test_ud,yalniz_kosinus,4562,0.4242,0.4216,0.3033,0.3682
+scientsbank,test_ud,uc_ozellik,4562,0.4404,0.4396,0.2726,0.3386
+scientsbank,test_uq,yalniz_kosinus,733,0.4265,0.4376,0.2535,0.3854
+scientsbank,test_uq,uc_ozellik,733,0.4365,0.4484,0.2168,0.3374
+beetle,test_ua,yalniz_kosinus,439,0.5171,0.5301,0.3445,0.3617
+beetle,test_ua,uc_ozellik,439,0.5394,0.5546,0.2401,0.3089
+beetle,test_uq,yalniz_kosinus,819,0.24,0.258,0.1238,0.4293
+beetle,test_uq,uc_ozellik,819,0.3244,0.3273,0.0961,0.3716
