@@ -76,5 +76,7 @@ def test_toplu_puanlama_hatali_dosya(istemci):
 def test_kavramlara_bolme():
     assert kavramlar("Terminals 1, 2 and 3 are connected to the negative battery terminal") == \
         ["Terminals 1 2 3 are connected to the negative battery terminal"]
+    assert kavramlar("bulbs B and C are still in closed paths with the battery") == \
+        ["bulbs B C are still in closed paths with the battery"]
     assert len(kavramlar("The harder mineral will leave a scratch on the less hard mineral. "
                          "If the black mineral is harder, the brown mineral will have a scratch.")) == 3

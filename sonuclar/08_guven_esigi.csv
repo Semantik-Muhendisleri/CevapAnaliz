@@ -1,0 +1,4 @@
+grup,eşik,sınanan yarıda giden oran,MAE (hepsi),MAE (sistemde kalan),MAE (öğretmene giden),hata azalması (%)
+Mohler,0.0457,0.2493,0.123,0.0997,0.189,18.9223
+SciEntsBank ve Beetle,0.0833,0.2567,0.2344,0.2078,0.3097,11.3403
+Hepsi birlikte,0.0626,0.2508,0.1791,0.1403,0.2935,21.6712

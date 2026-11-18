@@ -21,7 +21,7 @@ def kavramlar(referans: str) -> list[str]:
     "Terminals 1, 2 and 3" listesindeki "2") bir sonraki parçayla birleştirilir."""
     parcalar = [_KELIME.findall(p) for p in _BOL.split(referans.replace("...", " "))]
     parcalar = [p for p in parcalar if p]
-    anlamli = lambda p: sum(k.isalpha() and k.lower() not in GEREKSIZ for k in p)
+    anlamli = lambda p: sum(k.isalpha() and len(k) > 1 and k.lower() not in GEREKSIZ for k in p)
     sonuc, bekleyen = [], []
     for p in parcalar:
         bekleyen += p
