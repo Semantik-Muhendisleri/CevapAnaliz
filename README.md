@@ -79,6 +79,8 @@ uvicorn src.api.main:app --reload    # Puanlama servisi: http://127.0.0.1:8000/d
 | Sonuçlarım (öğrenci) | Öğrencinin kendi puanı ve eksik kavramları | FR-07, NFR-03 |
 | Her sonuçta | Belirsizlik ve "öğretmen incelemesi gerekli" işareti | FR-04 |
 
+![Arayüz – sonuçlar ekranı](sonuclar/sekiller/arayuz_sonuclar.jpg)
+
 ## Yerel kurulum
 
 Python 3.10 veya üzeri gerekir.

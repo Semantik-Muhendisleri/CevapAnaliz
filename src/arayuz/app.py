@@ -48,10 +48,14 @@ def sonuc_tablosu(kayitlar: list[dict]) -> pd.DataFrame:
 vt = vt_al()
 puanlayici = puanlayici_al()
 
+# Sayfa adres çubuğundan da seçilebilir, örneğin ?sayfa=Sonuçlar ya da ?sayfa=Sonuçlarım&ogrenci=101
+OGRETMEN_SAYFALARI = ["Sorular", "CSV yükle ve puanla", "Sonuçlar"]
+istenen = st.query_params.get("sayfa", "")
 st.sidebar.title("📝 CevapAnaliz")
-rol = st.sidebar.radio("Rol", ["Öğretmen", "Öğrenci"])
+rol = st.sidebar.radio("Rol", ["Öğretmen", "Öğrenci"], index=1 if istenen == "Sonuçlarım" else 0)
 if rol == "Öğretmen":
-    sayfa = st.sidebar.radio("Sayfa", ["Sorular", "CSV yükle ve puanla", "Sonuçlar"])
+    sayfa = st.sidebar.radio("Sayfa", OGRETMEN_SAYFALARI,
+                             index=OGRETMEN_SAYFALARI.index(istenen) if istenen in OGRETMEN_SAYFALARI else 0)
 else:
     sayfa = "Sonuçlarım"
 st.sidebar.caption("Model: " + ("ince ayarlı çapraz kodlayıcı" if puanlayici.ince_ayarli
@@ -125,7 +129,7 @@ elif sayfa == "Sonuçlar":
 # ------------------------------------------------------------------ Öğrenci: Sonuçlarım (FR-07)
 else:
     st.header("Sonuçlarım")
-    ogrenci_no = st.text_input("Öğrenci numaran")
+    ogrenci_no = st.text_input("Öğrenci numaran", value=st.query_params.get("ogrenci", ""))
     if ogrenci_no.strip():
         kayitlar = vt.sonuclar(ogrenci_no=ogrenci_no.strip())
         if not kayitlar:
