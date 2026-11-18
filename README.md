@@ -15,7 +15,9 @@ scripts/            Çalıştırılabilir betikler (veri indirme, dönüştürme
 src/veri/           Veri setlerini ortak biçime çeviren ve temizleyen kod
 src/girdi/          CSV girdi kontrolü (FR-06)
 src/puanlama/       Puanlama motoru: özellikler (FR-03) ve başarı ölçütleri (NFR-01)
-src/arayuz/         Web arayüzü (Streamlit) — geliştirilecek
+src/api/            Puanlama servisi (FastAPI)
+src/arayuz/         Web arayüzü (Streamlit)
+src/veritabani/     SQLite veritabanı (sorular ve sonuçlar)
 tests/              Birim testleri
 sonuclar/           Deney sonuçları (CSV) ve grafikler (sonuclar/sekiller)
 ```
@@ -33,6 +35,7 @@ Deneyler Google Colab'da çalıştırılır; veriler, sonuçlar ve grafikler Goo
 | [05 – İnce Ayar](notebooks/05_ince_ayar.ipynb) | Çapraz kodlayıcının (DistilRoBERTa) öğretmen puanlarıyla eğitilmesi | **Gerekir** |
 | [06 – Temiz Veri ve Ölçüm](notebooks/06_temiz_veri_ve_olcum.ipynb) | Yinelenen ve sızan satırların temizlenmesi, temiz veriyle yeniden eğitim ve ölçüm, Monte Carlo dropout ile belirsizlik | **Gerekir** |
 | [07 – Güven, Eksik Kavram, Girdi Kontrolü](notebooks/07_guven_eksik_kavram_girdi.ipynb) | Belirsiz cevapları öğretmene yönlendirme (FR-04), eksik kavram analizi (NFR-03), CSV girdi kontrolü (FR-06) | Önerilir |
+| [08 – Soru Metni, Güven Eşiği, Son Model](notebooks/08_soru_esik_son_model.ipynb) | Soru metnini modele verme deneyi, güven eşiğinin ayrı veride sınanması, arayüzün kullanacağı son modelin eğitilip kaydedilmesi | **Gerekir** |
 
 **Colab'da çalıştırma:**
 1. Google Drive'da `CevapAnaliz` adında bir klasör aç ve not defterlerini içine yükle.
@@ -57,6 +60,24 @@ Her hücrede **Pearson / QWK** değeri yer alır. Hedef (NFR-01): ikisi de ≥ 0
 - Ayrıntılı sonuçlar `sonuclar/` klasöründeki CSV dosyalarında, grafikler `sonuclar/sekiller/` klasöründedir.
 
 ![İnce ayarın etkisi](sonuclar/sekiller/05_ince_ayar.png)
+
+## Uygulama: puanlama servisi ve arayüz
+
+İnce ayarlı modeli 08 numaralı not defteri Drive'da `CevapAnaliz/modeller/ince_ayar_v1` klasörüne kaydeder. Bu klasörü indirip proje içindeki `modeller/ince_ayar_v1` konumuna koy. Model yoksa uygulama ince ayar yapılmamış hazır modelle **demo modunda** çalışır.
+
+```bash
+streamlit run src/arayuz/app.py      # Web arayüzü: http://localhost:8501
+uvicorn src.api.main:app --reload    # Puanlama servisi: http://127.0.0.1:8000/docs
+```
+
+| Ekran / uç nokta | İşlev | Gereksinim |
+|---|---|---|
+| Sorular · `POST /sorular` | Soru ve referans cevap ekleme | FR-01 |
+| CSV yükle ve puanla · `POST /toplu` | CSV kontrolü, toplu puanlama, kayıt | FR-02, FR-06 |
+| `POST /puanla` | Tek cevap puanlama | FR-02 |
+| Sonuçlar · `GET /sonuclar` | Puan aralığı ve inceleme durumuna göre filtreleme, CSV indirme | FR-08, FR-10 |
+| Sonuçlarım (öğrenci) | Öğrencinin kendi puanı ve eksik kavramları | FR-07, NFR-03 |
+| Her sonuçta | Belirsizlik ve "öğretmen incelemesi gerekli" işareti | FR-04 |
 
 ## Yerel kurulum
 
