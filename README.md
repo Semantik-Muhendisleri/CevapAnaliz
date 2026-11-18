@@ -12,7 +12,8 @@ notebooks/          Deneyler: Türkçe açıklamalı Google Colab not defterleri
 data/raw/           Ham veri setleri (depoya yüklenmez, betikle indirilir)
 data/processed/     Ortak biçime çevrilmiş veri (depoya yüklenmez)
 scripts/            Çalıştırılabilir betikler (veri indirme, dönüştürme, ilk deney)
-src/veri/           Veri setlerini ortak biçime çeviren kod
+src/veri/           Veri setlerini ortak biçime çeviren ve temizleyen kod
+src/girdi/          CSV girdi kontrolü (FR-06)
 src/puanlama/       Puanlama motoru: özellikler (FR-03) ve başarı ölçütleri (NFR-01)
 src/arayuz/         Web arayüzü (Streamlit) — geliştirilecek
 tests/              Birim testleri
@@ -30,6 +31,8 @@ Deneyler Google Colab'da çalıştırılır; veriler, sonuçlar ve grafikler Goo
 | [03 – Sentence-BERT](notebooks/03_sentence_bert.ipynb) | Hazır cümle gömme modelleriyle (MiniLM, MPNet) anlam benzerliği | Önerilir |
 | [04 – Özellik Birleştirme](notebooks/04_ozellik_birlestirme.ipynb) | TF-IDF ve Sentence-BERT özelliklerinin doğrusal regresyon ve gradyan artırmayla birleştirilmesi | Gerekmez |
 | [05 – İnce Ayar](notebooks/05_ince_ayar.ipynb) | Çapraz kodlayıcının (DistilRoBERTa) öğretmen puanlarıyla eğitilmesi | **Gerekir** |
+| [06 – Temiz Veri ve Ölçüm](notebooks/06_temiz_veri_ve_olcum.ipynb) | Yinelenen ve sızan satırların temizlenmesi, temiz veriyle yeniden eğitim ve ölçüm, Monte Carlo dropout ile belirsizlik | **Gerekir** |
+| [07 – Güven, Eksik Kavram, Girdi Kontrolü](notebooks/07_guven_eksik_kavram_girdi.ipynb) | Belirsiz cevapları öğretmene yönlendirme (FR-04), eksik kavram analizi (NFR-03), CSV girdi kontrolü (FR-06) | Önerilir |
 
 **Colab'da çalıştırma:**
 1. Google Drive'da `CevapAnaliz` adında bir klasör aç ve not defterlerini içine yükle.
