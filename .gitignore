@@ -18,3 +18,7 @@ Thumbs.db
 
 # Not defterlerinin yerelde ürettiği grafikler
 /sekiller/
+
+# Uygulama: yerel veritabanı ve indirilen model
+data/*.db
+modeller/
